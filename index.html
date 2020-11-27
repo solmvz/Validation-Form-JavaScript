@@ -1,18 +1,16 @@
 <html>
   <link rel="stylesheet" type="text/css" href="main.css" />
+  <script src="main.js"></script>
   <head>
       <meta charset="utf-8"/>
-      <title></title>
-      <script src="Script.js"></script>
-
+      <title>Register Form</title>
   </head>
   <body>
-   <p id="uiMessage" style="color:red"></p>
     <form action="#" method="POST" class="custom-form">
+      <p dir = "rt1" id="uiMessage" style="color:red"></p>
       <p dir = "rtl">
-
         <div dir = "rtl" >عنوان:<br/>
-          <select class="custom-select" style="width:250px;" name="uiTitle">
+          <select name="uiTitle" class="custom-select" style="width:250px;" name="uiTitle">
             <option value="-1">انتخاب عنوان...</option>
             <option value="0">آقا</option>
             <option value="1">خانم</option>
@@ -21,61 +19,85 @@
         </div>
 
         <div dir = "rtl" > نام: <br/>
-          <input type="text" name="uiName" class="custom-input" style="width:250px;" /> 
+          <input type="text" name="uiName"  class="custom-input" style="width:250px;" minlength="3" maxlength="50"/> 
         </div>
 
         <div dir = "rtl" >نام خانوادگی: <br/>
-           <input type="text" name="uiFamily" class="custom-input" style="width:250px;" />
+           <input type="text" name="uiFamily" class="custom-input" style="width:250px;" minlength="3" maxlength="100"/>
         </div>
 
         <div dir = "rtl" >نام و نام خانوادگی انگلیسی:<br/>
-           <input type="text" name="uiEngName" class="custom-input"  style="width:350px;" /></div>
+           <input type="text" name="uiEngname" onkeypress="return EnglishName(event)" class="custom-input" dir = "ltr" 
+           style="text-align: left; width:350px;" />
+        </div>
 
-        <div dir = "rtl"> آدرس پست الکترونیکی: <br/>
-            <input type="text" name="uiEmail" class="custom-input" style="width:350px;"/></div>
+        <div dir = "rtl"> آدرس پست الکترونیکی*: <br/>
+            <input type="text" name="uiEmail" onkeypress="return EnglishMail(event)" 
+            class="custom-input" dir = "ltr" style="text-align: left; width:350px;" />
+        </div>
 
-        <div dir = "rtl">شماره تلفن همراه: <br/>
-           <input type="text" name="uiPhoneNumber" class="custom-input" style="width:350px;" /></div>
+        <div dir = "rtl">شماره تلفن همراه*: <br/>
+          <input type="tel" dir="ltr" name="uiPhonenumber" id="phone" value="۰۹" class="custom-input" style="text-align: left;"
+          placeholder="۰۹۱۲۳۴۵۶۷۸۹" oninput="toFarsiPhone()" onkeypress="return isNumber(event)" maxlength="11" />
+        </div>
 
         <div dir = "rtl">کد ملی: <br/>
-          <input type="text" name="uiIDnum" class="custom-input" style="width:350px;"/></div>
+          <input type="text" dir="ltr" name="uiNationalId" id="nid" class="custom-input"  style="text-align: left;"
+          placeholder="۱۲۰-۳۴۵۶۷۸-۹" oninput="toFarsiId()" onkeypress="return isNumberID(event)" maxlength="12"/>
+        </div>
 
         <div dir = "rtl">رمز عبور: <br/>
-           <input type="text" name="uiPassword" class="custom-input" style="width:350px;"/></div>
+           <input type="text" dir="ltr"  name="uiPassword" onkeypress="return Password(event)" class="custom-input"
+            style="width:350px; text-align:left;" minlength="8" maxlength="24"/>
+        </div>
 
         <div dir = "rtl">تایید رمز عبور: <br/>
-           <input type="text" name="uiPasswordConfirm" class="custom-input" style="width:350px;"/></div>
+          <input type="text" dir="ltr"  name="uiPasswordConfirm" onkeypress="return Password(event)" class="custom-input"
+          style="width:350px; text-align:left;"  minlength="8" maxlength="24"/>
+        </div>
 
         <div dir = "rtl">آدرس: <br/>
-           <input type="text" name="uiAddress"class="custom-input" style="width:500px; height:200px;" /></div>
+          <textarea name="uiAddress" class="custom-input" cols="40" rows="5" maxlength="250"></textarea>
+        </div>
 
         <div dir = "rtl">تاریخ تولد: <br/>
-           <input type="text" name="uiDataofbirth"class="custom-input" style="width:350px;"/></div>
+           <input type="text"  name="day" id="day" onkeypress="return isNumber(event)" oninput="toFarsiBD()"
+            class="custom-input"  dir="ltr"  style="width: 70px;  text-align:center;" placeholder="۰۹" maxlength="2" />  
+            <span> / </span><span>
+           <input type="text" name="month" id="month" onkeypress="return isNumber(event)" oninput="toFarsiBD()"
+            class="custom-input" dir="ltr" style="width: 75px;  text-align:center;" placeholder="۰۹" maxlength="2"/>
+            </span><span> / </span><span>
+           <input type="text" name="year" id="year" onkeypress="return isNumber(event)" oninput="toFarsiBD()"
+            class="custom-input" dir="ltr"  style="width: 80px;  text-align:center;" placeholder="۱۳۹۹" maxlength="4"/>
+            </span>
+        </div>
 
-        <div dir = "rtl">وضعیت تأهل: <br/>
-           <input type="text" name="uiMaritalstatus"class="custom-input" style="width:350px;" /></div>
+        <div dir = "rtl">وضعیت تأهل*: <br/><br/>
+          <input type="radio" name="uiMaritalStatus" value="0">مجرد</input></br>
+          <input type="radio" name="uiMaritalStatus" value="1">متأهل</input>
+        </div></br>
 
         <div dir = "rtl">انتخاب علاقه مندیها:<br/>
-          <label class="container">یک
-          <input type="checkbox">
+          <label class="container">فیلم
+          <input type="checkbox" name="uiInterest" value='movie'>
           <span class="checkmark"></span>
           </label>
-          <label class="container">دو
-          <input type="checkbox">
+          <label class="container">موسیقی
+          <input type="checkbox" name="uiInterest" value='music'>
           <span class="checkmark"></span>
           </label>
-          <label class="container">سه
-          <input type="checkbox">
+          <label class="container">کتاب 
+          <input type="checkbox" name="uiInterest" value='book'>
           <span class="checkmark"></span>
           </label>
-          <label class="container">چهار
-          <input type="checkbox">
+          <label class="container">ورزش
+          <input type="checkbox" name="uiInterest" value='sport'>
           <span class="checkmark"></span>
           </label>
         </div>
 
         <div dir = "rtl">
-          <button class="custom-button">ثبت نهایی</button>
+          <input type="submit" name="uiSubmit" onclick="return formValidation()" value="ثبت نهایی" class="custom-button" />
         </div>
 
       </p>

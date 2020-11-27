@@ -18,14 +18,14 @@ body {
     font-family: "Calibri";
     margin: 50px 400px;
     padding: 10px 100px;
-    text-align: right;
     font-size: large;
     color:black;
-    
     box-sizing: border-box;
     border: 6px solid rgb(114, 161, 206);
     border-radius: 4px;
     border-style: inset;
+    text-align: right;
+
 }
 
 .custom-select {
@@ -45,7 +45,7 @@ body {
     margin: 8px 0px;
     box-sizing: border-box;
     border: 2px solid rgb(58, 121, 158);
-    
+    text-align: right;
 }
 
 .container {
@@ -57,9 +57,7 @@ body {
     padding: 12px 20px;
     margin: 8px 0px;
     box-sizing: border-box;
-    
   }
-  
   /* Hide the browser's default checkbox */
 .container input {
     cursor: pointer;
@@ -78,4 +76,12 @@ body {
     text-decoration: none;
     margin: 4px 2px;
     width: 300px;
+}
+
+@media (max-width: 1200px)
+{
+    .custom-form
+    {
+        width: 100%;
+    }
 }
